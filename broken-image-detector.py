@@ -29,11 +29,13 @@ for category in category_types:
     localNOF = 0
 
     #we change our current path to the category directory
+    #user should provide path to the directory where category directories belong
     os.chdir("/data/u/oguzhancan/deneme/" + catName )
     
     print("We are now inside " + catName)
 
     #we get the total number of files
+    # -2 is for non jpeg files
     ourLength = len(os.listdir('.')) - 2
     
     print("Our length is " + str(ourLength))
@@ -45,7 +47,7 @@ for category in category_types:
         try:
             im = Image.open(catName + str(i+1) + '.jpg')
         except Exception as e:
-            #print (i+1)
+            print (i+1)
             os.remove(catName + str(i+1) + '.jpg')
             localNOF += 1
             number_of_failures += 1
